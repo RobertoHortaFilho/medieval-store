@@ -15,6 +15,11 @@ const CategoryModel = (sequelize, DataTypes) => {
     tableName: 'categories'
   });
 
+  Category.associate = (models) => {
+    Category.hasMany(models.Product,
+     { foreignKey: 'idCategory', as: 'productList' });
+  };
+
   return Category
 }
 
