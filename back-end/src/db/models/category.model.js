@@ -1,0 +1,21 @@
+const CategoryModel = (sequelize, DataTypes) => {
+  const Category = sequelize.define('Category', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncremente: true,
+      allowNull: false,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING(150),
+      allowNull: false
+    },
+  }, {
+    timestamps: false,
+    tableName: 'categories'
+  });
+
+  return Category
+}
+
+module.exports = CategoryModel;
