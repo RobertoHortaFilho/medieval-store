@@ -3,9 +3,9 @@ const Joi = require('joi');
 const productSchema = Joi.object({
   name: Joi.string().min(3).required(),
   description: Joi.string().min(10).required(),
-  price: Joi.number().positive().strict(),
+  price: Joi.number().positive().required(),
   image: Joi.string().min(10).required(),
-  idCategory: Joi.number().integer().required().strict(),
+  idCategory: Joi.number().integer().required(),
 })
 
 const verifyProductCreate = (obj) => {
