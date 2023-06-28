@@ -5,6 +5,7 @@ const app = Express()
 
 //configs
 app.use(Express.json())
+app.use('/static', Express.static('src/static'))
 
 //routes
 
