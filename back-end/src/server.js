@@ -1,4 +1,5 @@
 const Express = require('express')
+const routes = require('./Routes')
 
 const app = Express()
 
@@ -10,5 +11,7 @@ app.use(Express.json())
 app.get('/', (_req, res) => {
   res.status(200).json({message: 'Servidor saudavel'})
 })
+
+app.use('/', routes)
 
 module.exports = app
