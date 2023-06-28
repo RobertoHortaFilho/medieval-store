@@ -1,6 +1,7 @@
 const ERRORS = {
   'NOTFOUND': 404,
   'INTERNAL': 500,
+  'INVALIDFIELD': 400
 }
 
 const STATUS = {
