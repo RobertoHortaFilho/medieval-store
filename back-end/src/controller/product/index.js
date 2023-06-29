@@ -26,5 +26,15 @@ const create = async (req, res) => {
   return res.status(STATUS.CREATED).json(data)
 };
 
+const getByCategoryId = async (req ,res) => {
+  const { id } = req.params
+  const { page } = req.body
+  const { error, data } = await productService.getByCategoryId(id , page);
+  if (error)
+    return  res.status(mapper(error)).json({ message: data })
+  return res.status(STATUS.OK).json(data)
+}
 
-module.exports = { getByid, create }
+
+
+module.exports = { getByid, create, getByCategoryId }

@@ -40,4 +40,17 @@ const create = async ({
   }
 }
 
-module.exports = { getByid, create }
+const getByCategoryId = async (id, page) => {
+  if (!id) 
+    return { error: "INVALIDFIELD", data: 'ID required' }
+  const data = await Product.findAll({
+    where: { idCategory: Number(id) },
+    limit: 9,
+    offset: ((page || 0) * 9),
+    includes: { model: Category, as: 'category', through: { attributes: [] }}
+  })
+  console.log(data)
+  return { data }
+}
+
+module.exports = { getByid, create, getByCategoryId }
