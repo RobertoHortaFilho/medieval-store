@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const { User } = require('../db/models')
 
 const PRIVATEKEY = process.env.PRIVATEKEY
 
@@ -9,12 +10,16 @@ const createToken = (data) => {
   return token
 }
 
-const decodeTokenMiddleware = (token) => {
+const decodeTokenMiddleware = async  (req, res, next) => {
+  const token = req.headers.authorization;
+  if (!token) 
+    return res.status(401).json({message: 'Unauthorized', status: false})
   try {
-    const decode = jwt.verify(token, PRIVATEKEY)
-    return decode
+    const { data } = jwt.verify(token, PRIVATEKEY)
+    req.user = { ...data }
+    return next()
   } catch (error) {
-    throw new Error('Token invalido')
+    return res.status(401).json({message: 'token expired', status: false})
   }
 }
 
