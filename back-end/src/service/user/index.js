@@ -1,9 +1,12 @@
 const { User } = require('../../db/models/index')
 const { createToken } = require('../../utils/jwt')
 
+const getUser = async (name) => {
+  return await User.findOne({ where: { name } })
+}
 
 const login = async ({ name, password }) => {
-  const data = await User.findOne({ where: { name } })
+  const data = getUser(name)
   if (!data)
     return { error: 'NOTFOUND', data: 'incorrect user'}
   if (data.password === password) {
@@ -20,4 +23,4 @@ const login = async ({ name, password }) => {
   return { error: 'NOTFOUND', data: 'incorrect user' }
 }
 
-module.exports = { login }
+module.exports = { login, getUser }
