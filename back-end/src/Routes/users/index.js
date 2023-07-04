@@ -5,6 +5,7 @@ const { decodeTokenMiddleware } = require('../../utils/jwt')
 const route = Express.Router()
 
 route.post('/login', userController.login)
+route.post('/create', userController.create)
 route.post('/auth', decodeTokenMiddleware, userController.auth)
 
 module.exports = route
