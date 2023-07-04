@@ -1,12 +1,9 @@
 const jwt = require('jsonwebtoken')
-const { User } = require('../db/models')
 
 const PRIVATEKEY = process.env.PRIVATEKEY
 
 const createToken = (data) => {
   const token = jwt.sign({ data }, PRIVATEKEY);
-
-  decodeTokenMiddleware(token)
   return token
 }
 
