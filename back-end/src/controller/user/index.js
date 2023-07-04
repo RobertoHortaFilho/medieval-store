@@ -20,4 +20,11 @@ const auth = async (req, res) => {
   return res.status(401).json({message: 'Invalid token', status: false })
 }
 
-module.exports = { login, auth }
+const create = async (req, res) => {
+  const { body } = req;
+  const { error, data } = await userService.create(body)
+  if (error) return res.status(mapper(error)).json({ message: data })
+  res.status(201).json(data)            
+}
+
+module.exports = { login, auth, create }
