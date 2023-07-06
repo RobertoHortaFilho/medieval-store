@@ -4,11 +4,11 @@ const { verifyUserCreate } = require('../validation/userValidadate')
 
 
 const getUser = async (name) => {
-  return await User.findOne({ where: { name } })
+  return await User.findOne({ where: { name: name } })
 }
 
 const login = async ({ name, password }) => {
-  const data = getUser(name)
+  const data = await getUser(name)
   if (!data)
     return { error: 'NOTFOUND', data: 'incorrect user'}
   if (data.password === password) {
