@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h2>Documentação Medieval Store 🐉</h2>
+  </header>
+  <main>
+    <section id="Introducao">
+      <h4>Introduçao</h4>
+      <p>Documentação da api 'MedievalStore' criada por <a href="https://github.com/RobertoHortaFilho">Roberto filho</a>.</p>
+      <h6>Sobre</h6>
+      <p>
+        MedievalStore é uma loja online onde você pode comprar todos os equipamentos nescessarios para viver
+        uma grande aventura em um mundo medieval 🐲, ou até mesmo completar parte do seu cosplay.
+      </p>
+    </section>
+
+    <section id="User">
+      <h4>Usuarios</h4>
+      <section>
+        <p class="sub-tittle">Criaçao de um novo usuário:</p>
+        <code>(POST)http://defaultRoute/user/create</code>
+        <p>Corpo da requisição</p>
+        <code>
+          { <br>
+            name: String(name), <br>
+            password: String(password) <br>
+          }
+        </code>
+        <p class="response-server">Resposta do servidor</p>
+        
+        <code>
+          Status: 201 <br>
+          { <br>
+            "token": String(JWTToken), <br>
+            "alias": String(alias), <br>
+            "name": String(alais), <br>
+            "photo": String(path) <br>
+          }
+        </code>
+      </section>
+
+      <section>
+        <p class="sub-tittle">Login de um usuário:</p>
+        <code>(POST)http://defaultRoute/user/login</code>
+        <p>corpo da requisição</p>
+        <code>
+          { <br>
+            name: string, <br>
+            password: string <br>
+          }
+        </code>
+        <p>Resposta do servidor</p>
+        <code>
+          Status: 200 <br>
+          { <br>
+            "alias": String(alias), <br>
+            "photo": String(path), <br>
+            "permission": Boolean(admin), <br>
+            "token": String(JWTToken) <br>
+          }
+        </code>
+      </section>
+
+      <section>
+        <p class="sub-tittle">Autenticação de um usuário:</p>
+        <code>(POST)http://defaultRoute/user/auth</code>
+        <p>cabeçalho da requisição</p>
+        <code>
+          { <br>
+            Authorization: JWTToken, <br>
+          }
+        </code>
+        <p>Resposta do servidor</p>
+        <p>status</p>
+        <code>
+          Sucesso: 200 <br>
+          NãoAutorizado: 401
+        </code>
+        <p>Corpo da resposta</p>
+        <code>
+          { <br>
+            permission: BOOLEAN(adminstrador), <br>
+            status: BOOLEAN(authorizado)
+          <br>}
+        </code>
+
+      </section>
+
+    </section>
+
+    <section id="Products">
+      <h4>Produtos</h4>
+      <p class="sub-tittle">criaçao de um novo produto:</p>
+      <code>(POST)http://defaultRoute/products</code>
+      <p>corpo da requisição</p>
+      <code>
+        { <br>
+        }
+      </code>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <h5>Todos direitos reservados RobertoFilho</h5>
+    </div>
+  </footer>
+  
+</body>
+</html>
